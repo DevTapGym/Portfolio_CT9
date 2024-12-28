@@ -922,3 +922,9 @@ span{
         flex-direction: column-reverse;
     }
 }
+
+@media (max-width: 360px){
+    .home .profession-container .overlay{
+        top: 70rem;
+    }
+}
