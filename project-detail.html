@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Detail - Huynh Cong Tien</title>
+    <!-- ================= Icon ===================== -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- ============== Swiper CSS ================ -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <!-- ============== Link CSS ================ -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="project-detail.css">
+</head>
+
+<body>
+    <header class="header sticky">
+        <a href="index.html" class="logo">
+            <img class="img-logo" src="./images/Logo_Portfolio.png" alt="Logo">
+        </a>
+        <nav class="navbar">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#portfolio" class="active">Project</a>
+            <a href="index.html#activities">Activities</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+
+        <div class="language-switch" id="language-switch">
+            <div class="language-toggle">
+                <span class="lang-text" id="lang-text">EN</span>
+                <i class='bx bx-world'></i>
+            </div>
+        </div>
+
+        <div class="bx bx-moon" id="darkMode-icon"></div>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <!-- Project Detail Section -->
+    <section class="project-detail" id="project-detail">
+        <div class="container">
+            <!-- Back Button -->
+            <div class="back-navigation">
+                <a href="index.html#portfolio" class="back-btn">
+                    <i class='bx bx-arrow-back'></i>
+                    <span>Back to Portfolio</span>
+                </a>
+            </div>
+
+            <!-- Project Header -->
+            <div class="project-header">
+                <div class="project-info">
+                    <h1 class="project-title">Project Title Here</h1>
+                    <p class="project-subtitle">A comprehensive description of the project in one line</p>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class='bx bx-calendar'></i>
+                            <span>January 2024</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-user'></i>
+                            <span>Personal Project</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-time'></i>
+                            <span>2 months</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary">
+                            <i class='bx bx-link-external'></i>
+                            Live Demo
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class='bx bxl-github'></i>
+                            Source Code
+                        </a>
+                    </div>
+                </div>
+                <div class="project-featured-image">
+                    <img src="./images/portfolio1.jpg" alt="Project Featured Image">
+                </div>
+            </div>
+
+            <!-- Project Content -->
+            <div class="project-content">
+                <!-- Overview Section -->
+                <div class="content-section">
+                    <h2 class="section-title">Project Overview</h2>
+                    <p class="section-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                        voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    </p>
+                    <p class="section-description">
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+                        id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                        doloremque laudantium.
+                    </p>
+                </div>
+
+                <!-- Technologies Section -->
+                <div class="content-section">
+                    <h2 class="section-title">Technologies Used</h2>
+                    <div class="tech-stack">
+                        <div class="tech-category">
+                            <h3 class="tech-category-title">Frontend</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">React</span>
+                            </div>
+                        </div>
+                        <div class="tech-category">
+                            <h3 class="tech-category-title">Backend</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Express.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                            </div>
+                        </div>
+                        <div class="tech-category">
+                            <h3 class="tech-category-title">Tools</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Git</span>
+                                <span class="tech-tag">Figma</span>
+                                <span class="tech-tag">Postman</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features Section -->
+                <div class="content-section">
+                    <h2 class="section-title">Key Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class='bx bx-mobile-alt'></i>
+                            </div>
+                            <h3 class="feature-title">Responsive Design</h3>
+                            <p class="feature-description">Fully responsive design that works seamlessly across all
+                                devices and screen sizes.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class='bx bx-rocket'></i>
+                            </div>
+                            <h3 class="feature-title">Fast Performance</h3>
+                            <p class="feature-description">Optimized for speed with efficient code and modern
+                                development practices.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class='bx bx-shield'></i>
+                            </div>
+                            <h3 class="feature-title">Secure</h3>
+                            <p class="feature-description">Implemented with security best practices and data protection
+                                measures.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class='bx bx-user-check'></i>
+                            </div>
+                            <h3 class="feature-title">User Friendly</h3>
+                            <p class="feature-description">Intuitive user interface designed for optimal user
+                                experience.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Section -->
+                <div class="content-section">
+                    <h2 class="section-title">Project Gallery</h2>
+                    <div class="project-gallery">
+                        <div class="gallery-item">
+                            <img src="./images/portfolio1.jpg" alt="Project Screenshot 1">
+                            <div class="gallery-overlay">
+                                <i class='bx bx-zoom-in'></i>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="./images/portfolio2.jpg" alt="Project Screenshot 2">
+                            <div class="gallery-overlay">
+                                <i class='bx bx-zoom-in'></i>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="./images/portfolio3.jpg" alt="Project Screenshot 3">
+                            <div class="gallery-overlay">
+                                <i class='bx bx-zoom-in'></i>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="./images/portfolio4.jpg" alt="Project Screenshot 4">
+                            <div class="gallery-overlay">
+                                <i class='bx bx-zoom-in'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Challenges Section -->
+                <div class="content-section">
+                    <h2 class="section-title">Challenges & Solutions</h2>
+                    <div class="challenges-list">
+                        <div class="challenge-item">
+                            <div class="challenge-header">
+                                <i class='bx bx-error-circle'></i>
+                                <h3>Challenge Title</h3>
+                            </div>
+                            <p class="challenge-description">
+                                Description of the challenge faced during development and how it was overcome with
+                                specific technical solutions.
+                            </p>
+                        </div>
+                        <div class="challenge-item">
+                            <div class="challenge-header">
+                                <i class='bx bx-error-circle'></i>
+                                <h3>Another Challenge</h3>
+                            </div>
+                            <p class="challenge-description">
+                                Another challenge description with detailed explanation of the problem-solving approach
+                                and implementation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lessons Learned Section -->
+                <div class="content-section">
+                    <h2 class="section-title">Lessons Learned</h2>
+                    <div class="lessons-grid">
+                        <div class="lesson-item">
+                            <div class="lesson-icon">
+                                <i class='bx bx-bulb'></i>
+                            </div>
+                            <h3 class="lesson-title">Technical Skills</h3>
+                            <p class="lesson-description">Gained deeper understanding of modern web development
+                                frameworks and best practices.</p>
+                        </div>
+                        <div class="lesson-item">
+                            <div class="lesson-icon">
+                                <i class='bx bx-group'></i>
+                            </div>
+                            <h3 class="lesson-title">Project Management</h3>
+                            <p class="lesson-description">Learned effective project planning and time management
+                                strategies.</p>
+                        </div>
+                        <div class="lesson-item">
+                            <div class="lesson-icon">
+                                <i class='bx bx-cog'></i>
+                            </div>
+                            <h3 class="lesson-title">Problem Solving</h3>
+                            <p class="lesson-description">Enhanced debugging skills and systematic approach to problem
+                                resolution.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Projects -->
+            <div class="related-projects">
+                <h2 class="section-title">Related Projects</h2>
+                <div class="related-grid">
+                    <div class="related-item">
+                        <div class="related-image">
+                            <img src="./images/portfolio2.jpg" alt="Related Project 1">
+                            <div class="related-overlay">
+                                <a href="#" class="related-link">
+                                    <i class='bx bx-link-external'></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="related-title">Related Project 1</h3>
+                        <p class="related-description">Brief description of related project</p>
+                    </div>
+                    <div class="related-item">
+                        <div class="related-image">
+                            <img src="./images/portfolio3.jpg" alt="Related Project 2">
+                            <div class="related-overlay">
+                                <a href="#" class="related-link">
+                                    <i class='bx bx-link-external'></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="related-title">Related Project 2</h3>
+                        <p class="related-description">Brief description of related project</p>
+                    </div>
+                    <div class="related-item">
+                        <div class="related-image">
+                            <img src="./images/portfolio4.jpg" alt="Related Project 3">
+                            <div class="related-overlay">
+                                <a href="#" class="related-link">
+                                    <i class='bx bx-link-external'></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="related-title">Related Project 3</h3>
+                        <p class="related-description">Brief description of related project</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA & Footer Section -->
+    <section class="contact-cta-footer">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Interested in Working Together?</h2>
+                <p>Let's discuss your next project and bring your ideas to life!</p>
+                <a href="index.html#contact" class="btn btn-primary">
+                    <i class='bx bx-message-rounded-dots'></i>
+                    Get In Touch
+                </a>
+            </div>
+
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>
+                        Copyright &copy; 2023 By CT9(Huynh Cong Tien) | All Rights Reserved
+                    </p>
+                </div>
+
+                <div class="footer-icon">
+                    <a href="#project-detail">
+                        <i class='bx bxs-upvote'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========== Link Scroll Reveal ============= -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- ============== Swiper JS ================ -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <!-- =============== Link Script ================== -->
+    <script src="./script.js"></script>
+
+    <!-- Project Detail Scripts -->
+    <script>
+        // Gallery lightbox functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    const img = this.querySelector('img');
+                    // Add lightbox functionality here if needed
+                    console.log('Gallery item clicked:', img.src);
+                });
+            });
+
+            // Smooth scroll for anchor links
+            const anchorLinks = document.querySelectorAll('a[href^="#"]');
+            anchorLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
