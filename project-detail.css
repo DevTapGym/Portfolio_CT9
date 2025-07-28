@@ -95,8 +95,13 @@
     font-weight: 500;
 }
 
+.meta-item span {
+    font-size: 1.4rem;
+    margin: 0;
+}
+
 .meta-item i {
-    font-size: 2rem;
+    font-size: 2.4rem;
     color: var(--main-color);
 }
 
@@ -209,6 +214,11 @@
     line-height: 1.8;
     margin-bottom: 2rem;
     opacity: 0.9;
+}
+
+.section-description a {
+    color: var(--main-color);
+    text-decoration: underline;
 }
 
 /* Tech Stack */
@@ -342,6 +352,14 @@
     gap: 2rem;
 }
 
+/* Mobile Gallery Specific Styles */
+.mobile-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 2.5rem;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
 .gallery-item {
     position: relative;
     border-radius: 1.5rem;
@@ -350,9 +368,19 @@
     transition: all .3s ease;
 }
 
+.mobile-screenshot {
+    border-radius: 2rem;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15);
+}
+
 .gallery-item:hover {
     transform: translateY(-.5rem);
     box-shadow: 0 1rem 2rem rgba(117, 78, 249, 0.3);
+}
+
+.mobile-screenshot:hover {
+    transform: translateY(-.8rem);
+    box-shadow: 0 2rem 4rem rgba(117, 78, 249, 0.25);
 }
 
 .gallery-item img {
@@ -360,6 +388,13 @@
     height: 25rem;
     object-fit: cover;
     transition: transform .4s ease;
+}
+
+.mobile-screenshot img {
+    height: 40rem;
+    object-fit: contain;
+    background: #f8f9fa;
+    padding: 1rem;
 }
 
 .gallery-overlay {
@@ -370,6 +405,7 @@
     height: 100%;
     background: rgba(117, 78, 249, 0.8);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     opacity: 0;
@@ -384,9 +420,22 @@
     transform: scale(1.1);
 }
 
+.mobile-screenshot:hover img {
+    transform: scale(1.05);
+}
+
 .gallery-overlay i {
     font-size: 4rem;
     color: var(--white-color);
+    margin-bottom: 1rem;
+}
+
+.gallery-caption {
+    color: var(--white-color);
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+    opacity: 0.9;
 }
 
 /* Challenges */
@@ -401,6 +450,7 @@
     border-radius: 2rem;
     border-left: .5rem solid var(--main-color);
     transition: all .3s ease;
+    margin: 2rem 0;
 }
 
 .challenge-item:hover {
@@ -707,6 +757,20 @@
     
     .project-gallery {
         grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    }
+    
+    .mobile-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .mobile-screenshot img {
+        height: 35rem;
+        padding: 0.5rem;
+    }
+    
+    .gallery-caption {
+        font-size: 1.4rem;
     }
     
     .tech-stack {

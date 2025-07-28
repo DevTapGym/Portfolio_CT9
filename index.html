@@ -428,6 +428,192 @@
             });
         });
     </script>
+
+    <!-- Image Modal Script -->
+    <script>
+        class ActivityImageModal {
+            constructor() {
+                this.modal = document.getElementById('imageModal');
+                this.modalImage = document.getElementById('modalImage');
+                this.modalTitle = document.getElementById('modalTitle');
+                this.modalDescription = document.getElementById('modalDescription');
+                this.modalClose = document.querySelector('.modal-close');
+                this.modalPrevBtn = document.getElementById('modalPrevBtn');
+                this.modalNextBtn = document.getElementById('modalNextBtn');
+                this.modalCounter = document.getElementById('modalImageCounter');
+                this.modalContent = document.querySelector('.modal-content');
+
+                this.currentImages = [];
+                this.currentIndex = 0;
+                this.currentActivityTitle = '';
+                this.currentActivityDescription = '';
+
+                this.init();
+            }
+
+            init() {
+                // Add click listeners to activity items
+                const activityItems = document.querySelectorAll('.activity-item');
+                activityItems.forEach((item, index) => {
+                    item.addEventListener('click', (e) => {
+                        // Don't trigger if clicking on swiper navigation
+                        if (e.target.closest('.swiper-button-next') ||
+                            e.target.closest('.swiper-button-prev') ||
+                            e.target.closest('.swiper-pagination')) {
+                            return;
+                        }
+                        this.openModal(item);
+                    });
+
+                    // Add cursor pointer style
+                    item.style.cursor = 'pointer';
+                });
+
+                // Modal controls
+                this.modalClose.addEventListener('click', () => this.closeModal());
+                this.modalPrevBtn.addEventListener('click', () => this.prevImage());
+                this.modalNextBtn.addEventListener('click', () => this.nextImage());
+
+                // Close modal when clicking outside
+                this.modal.addEventListener('click', (e) => {
+                    if (e.target === this.modal) {
+                        this.closeModal();
+                    }
+                });
+
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (this.modal.classList.contains('show')) {
+                        switch (e.key) {
+                            case 'Escape':
+                                this.closeModal();
+                                break;
+                            case 'ArrowLeft':
+                                this.prevImage();
+                                break;
+                            case 'ArrowRight':
+                                this.nextImage();
+                                break;
+                        }
+                    }
+                });
+            }
+
+            openModal(activityItem) {
+                // Get activity info
+                const activityContent = activityItem.querySelector('.activity-content');
+                this.currentActivityTitle = activityContent.querySelector('h4').textContent;
+                this.currentActivityDescription = activityContent.querySelector('p').textContent;
+
+                // Get images
+                this.currentImages = [];
+                const imageSlider = activityItem.querySelector('.activity-image-slider');
+                const singleImage = activityItem.querySelector('.activity-image img');
+
+                if (imageSlider) {
+                    // Multiple images from swiper
+                    const swiperSlides = imageSlider.querySelectorAll('.swiper-slide img');
+                    swiperSlides.forEach(img => {
+                        this.currentImages.push(img.src);
+                    });
+                } else if (singleImage) {
+                    // Single image
+                    this.currentImages.push(singleImage.src);
+                }
+
+                if (this.currentImages.length === 0) return;
+
+                this.currentIndex = 0;
+                this.updateModal();
+                this.showModal();
+            }
+
+            updateModal() {
+                // Update image
+                this.modalImage.src = this.currentImages[this.currentIndex];
+
+                // Update info
+                this.modalTitle.textContent = this.currentActivityTitle;
+                this.modalDescription.textContent = this.currentActivityDescription;
+
+                // Update counter and navigation
+                if (this.currentImages.length > 1) {
+                    this.modalCounter.textContent = `${this.currentIndex + 1} / ${this.currentImages.length}`;
+                    this.modalContent.classList.remove('modal-single-image');
+
+                    // Update navigation buttons
+                    this.modalPrevBtn.disabled = this.currentIndex === 0;
+                    this.modalNextBtn.disabled = this.currentIndex === this.currentImages.length - 1;
+                } else {
+                    this.modalContent.classList.add('modal-single-image');
+                }
+            }
+
+            showModal() {
+                this.modal.classList.remove('hide');
+                this.modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+
+                // Focus for keyboard navigation
+                this.modal.focus();
+            }
+
+            closeModal() {
+                this.modal.classList.add('hide');
+                this.modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+
+                // Clean up after animation
+                setTimeout(() => {
+                    this.modal.classList.remove('hide');
+                }, 300);
+            }
+
+            prevImage() {
+                if (this.currentIndex > 0) {
+                    this.currentIndex--;
+                    this.updateModal();
+                }
+            }
+
+            nextImage() {
+                if (this.currentIndex < this.currentImages.length - 1) {
+                    this.currentIndex++;
+                    this.updateModal();
+                }
+            }
+        }
+
+        // Initialize modal when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            new ActivityImageModal();
+        });
+    </script>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-image-container">
+                <img id="modalImage" src="" alt="Activity Image">
+                <div class="modal-navigation">
+                    <button class="modal-nav-btn" id="modalPrevBtn">
+                        <i class='bx bx-chevron-left'></i>
+                    </button>
+                    <button class="modal-nav-btn" id="modalNextBtn">
+                        <i class='bx bx-chevron-right'></i>
+                    </button>
+                </div>
+                <div class="modal-image-counter">
+                    <span id="modalImageCounter">1 / 1</span>
+                </div>
+            </div>
+            <div class="modal-info">
+                <h3 id="modalTitle">Activity Title</h3>
+                <p id="modalDescription">Activity description</p>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
