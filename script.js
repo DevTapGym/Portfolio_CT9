@@ -83,14 +83,7 @@ const translations = {
     techDescription: 'The "Tech Innovators Challenge" competition organized by the Faculty of Information Technology is one of the key academic activities in the 2024-2025 academic year.',
     workshopsTitle: 'Workshops',
     workshopsDescription: 'Actively participated in workshops and seminars to develop soft skills such as communication, teamwork, and critical thinking.',
-    
-    // Tags
-    academic: 'Academic',
-    research: 'Research',
-    presentation: 'Presentation',
-    awardWinner: 'Award Winner',
-    workshops: 'Workshops',
-    
+      
     // Contact section
     contactTitle: 'Contact Me!',
     phoneNumber: 'Phone Number',
@@ -104,9 +97,6 @@ const translations = {
     workTogether: 'Let\'s Work Together!',
     workDescription: 'I\'m always excited to take on new challenges and collaborate on innovative projects. Whether you have a specific idea in mind or just want to explore possibilities, I\'d love to hear from you!',
     startProject: 'Start a Project',
-    
-    // Footer
-    copyright: 'Copyright © 2023 By CT9(Huynh Cong Tien) | All Rights Reserved'
   },
   
   vi: {
@@ -135,18 +125,12 @@ const translations = {
     // Activities section
     activitiesTitle: 'Hoạt Động Học Thuật & Ngoại Khóa',
     scientificResearch: 'Nghiên Cứu Khoa Học 2025',
-    scientificDescription: 'Tham gia hoạt động nghiên cứu khoa học cấp trường; trình bày dự án trước hội đồng học thuật; phát triển tư duy phản biện, phân tích dữ liệu và kỹ năng viết báo cáo khoa học.',
+    scientificDescription: 'Tham gia hoạt động nghiên cứu khoa học cấp trường, trình bày dự án trước hội đồng học thuật, phát triển tư duy phản biện, phân tích dữ liệu và kỹ năng viết báo cáo khoa học.',
     techChallenge: 'Tech Innovators Challenge 2025',
     techDescription: 'Cuộc thi "Tech Innovators Challenge" do Khoa Công nghệ Thông tin tổ chức là một trong những hoạt động học thuật quan trọng trong năm học 2024-2025.',
     workshopsTitle: 'Hội Thảo',
     workshopsDescription: 'Tích cực tham gia các hội thảo và seminar để phát triển kỹ năng mềm như giao tiếp, làm việc nhóm và tư duy phản biện.',
     
-    // Tags
-    academic: 'Học Thuật',
-    research: 'Nghiên Cứu',
-    presentation: 'Thuyết Trình',
-    awardWinner: 'Đạt Giải',
-    workshops: 'Hội Thảo',
     
     // Contact section
     contactTitle: 'Liên Hệ Với Tôi!',
@@ -162,8 +146,6 @@ const translations = {
     workDescription: 'Tôi luôn hào hứng đón nhận những thử thách mới và hợp tác trong các dự án sáng tạo. Dù bạn có ý tưởng cụ thể hay chỉ muốn khám phá các khả năng, tôi rất mong được nghe từ bạn!',
     startProject: 'Bắt Đầu Dự Án',
     
-    // Footer
-    copyright: 'Bản quyền © 2023 Bởi CT9(Huỳnh Công Tiến) | Tất cả quyền được bảo lưu'
   }
 };
 
@@ -177,30 +159,66 @@ function updateLanguage(lang) {
     document.body.classList.remove('vietnamese-font');
   }
   
-  // Update navigation
-  document.querySelector('a[href="#home"]').textContent = t.home;
-  document.querySelector('a[href="#about"]').textContent = t.about;
-  document.querySelector('a[href="#portfolio"]').textContent = t.project;
-  document.querySelector('a[href="#activities"]').textContent = t.activities;
-  document.querySelector('a[href="#contact"]').textContent = t.contact;
-  
-  // Update home section
-  document.querySelector('.home-content h3').textContent = t.hello;
-  document.querySelector('.home-content h1').textContent = t.name;
-  const homeParagraph = document.querySelector('.home-content p');
-  homeParagraph.innerHTML = t.homeDescription + t.homeDescription2;
-  
-  // Update about section
-  document.querySelector('.about-content h2').innerHTML = t.aboutTitle.replace(' Me', ' <span>Me</span>').replace(' Tôi', ' <span>Tôi</span>');
-  document.querySelector('.about-content h3').textContent = t.aboutSubtitle;
-  document.querySelector('.about-content p').textContent = t.aboutDescription;
-  document.querySelector('.about-content .btn').textContent = t.readMore;
+  try {
+    // Update navigation
+    const navLinks = {
+      'a[href="#home"]': t.home,
+      'a[href="#about"]': t.about,
+      'a[href="#portfolio"]': t.project,
+      'a[href="#activities"]': t.activities,
+      'a[href="#contact"]': t.contact
+    };
+    
+    Object.entries(navLinks).forEach(([selector, text]) => {
+      const element = document.querySelector(selector);
+      if (element) element.textContent = text;
+    });
+    
+    // Update home section
+    const homeH3 = document.querySelector('.home-content h3');
+    const homeH1 = document.querySelector('.home-content h1');
+    const homeParagraph = document.querySelector('.home-content p');
+    
+    if (homeH3) homeH3.textContent = t.hello;
+    if (homeH1) homeH1.textContent = t.name;
+    if (homeParagraph) homeParagraph.innerHTML = t.homeDescription + t.homeDescription2;
+    
+    // Update about section
+    const aboutH2 = document.querySelector('.about-content h2');
+    const aboutH3 = document.querySelector('.about-content h3');
+    const aboutP = document.querySelector('.about-content p');
+    const aboutBtn = document.querySelector('.about-content .btn');
+    
+    if (aboutH2) {
+      if (lang === 'vi') {
+        aboutH2.innerHTML = 'Giới Thiệu Về <span>Tôi</span>';
+      } else {
+        aboutH2.innerHTML = 'About <span>Me</span>';
+      }
+    }
+    if (aboutH3) aboutH3.textContent = t.aboutSubtitle;
+    if (aboutP) aboutP.textContent = t.aboutDescription;
+    if (aboutBtn) aboutBtn.textContent = t.readMore;
   
   // Update portfolio section
-  document.querySelector('.portfolio .heading').innerHTML = t.latestProject.replace('Latest', 'Latest <span>').replace('Project', 'Project</span>').replace('Mới Nhất', 'Mới Nhất <span>').replace('Dự Án', 'Dự Án</span>');
+  const portfolioHeading = document.querySelector('.portfolio .heading');
+  if (portfolioHeading) {
+    if (lang === 'vi') {
+      portfolioHeading.innerHTML = 'Dự Án <span>Mới Nhất</span>';
+    } else {
+      portfolioHeading.innerHTML = 'Latest <span>Project</span>';
+    }
+  }
   
   // Update activities section
-  document.querySelector('.activities .heading').innerHTML = t.activitiesTitle.replace('Academic &', 'Academic & <span>').replace('Activities', 'Activities</span>').replace('Học Thuật &', 'Học Thuật & <span>').replace('Ngoại Khóa', 'Ngoại Khóa</span>');
+  const activitiesHeading = document.querySelector('.activities .heading');
+  if (activitiesHeading) {
+    if (lang === 'vi') {
+      activitiesHeading.innerHTML = 'Hoạt Động Học Thuật & <span>Ngoại Khóa</span>';
+    } else {
+      activitiesHeading.innerHTML = 'Academic & <span>Extracurricular Activities</span>';
+    }
+  }
   
   const activityTitles = document.querySelectorAll('.activity-content h4');
   const activityDescriptions = document.querySelectorAll('.activity-content p');
@@ -214,19 +232,15 @@ function updateLanguage(lang) {
   if (activityTitles[2]) activityTitles[2].textContent = t.workshopsTitle;
   if (activityDescriptions[2]) activityDescriptions[2].textContent = t.workshopsDescription;
   
-  // Update tags
-  const tags = document.querySelectorAll('.tag');
-  tags.forEach(tag => {
-    const text = tag.textContent.toLowerCase();
-    if (text.includes('academic') || text.includes('học thuật')) tag.textContent = t.academic;
-    if (text.includes('research') || text.includes('nghiên cứu')) tag.textContent = t.research;
-    if (text.includes('presentation') || text.includes('thuyết trình')) tag.textContent = t.presentation;
-    if (text.includes('award') || text.includes('đạt giải')) tag.textContent = t.awardWinner;
-    if (text.includes('workshops') || text.includes('hội thảo')) tag.textContent = t.workshops;
-  });
-  
   // Update contact section
-  document.querySelector('.contact .heading').innerHTML = t.contactTitle.replace('Contact', 'Contact <span>').replace('Me!', 'Me!</span>').replace('Liên Hệ', 'Liên Hệ <span>').replace('Với Tôi!', 'Với Tôi!</span>');
+  const contactHeading = document.querySelector('.contact .heading');
+  if (contactHeading) {
+    if (lang === 'vi') {
+      contactHeading.innerHTML = 'Liên Hệ <span>Với Tôi!</span>';
+    } else {
+      contactHeading.innerHTML = 'Contact <span>Me!</span>';
+    }
+  }
   
   const contactHeaders = document.querySelectorAll('.contact-details h3');
   const contactButtons = document.querySelectorAll('.contact-link');
@@ -239,18 +253,34 @@ function updateLanguage(lang) {
   if (contactButtons[1]) contactButtons[1].textContent = t.sendEmail;
   if (contactButtons[2]) contactButtons[2].textContent = t.viewMap;
   
-  const locationText = document.querySelector('.contact-details p:last-of-type');
-  if (locationText && locationText.textContent.includes('Ho Chi Minh')) {
-    locationText.textContent = t.locationName;
-  }
+  // Update location text specifically
+  const contactCards = document.querySelectorAll('.contact-card');
+  contactCards.forEach(card => {
+    const cardText = card.querySelector('p');
+    if (cardText && (cardText.textContent.includes('Ho Chi Minh') || cardText.textContent.includes('Thành phố'))) {
+      cardText.textContent = t.locationName;
+    }
+  });
   
-  document.querySelector('.social-contact h3').textContent = t.followMe;
-  document.querySelector('.contact-cta h3').textContent = t.workTogether;
-  document.querySelector('.contact-cta p').textContent = t.workDescription;
-  document.querySelector('.contact-btn').innerHTML = `<i class='bx bx-send'></i>${t.startProject}`;
+  // Update social contact section
+  const socialContactH3 = document.querySelector('.social-contact h3');
+  if (socialContactH3) socialContactH3.textContent = t.followMe;
+  
+  // Update contact CTA section
+  const contactCtaH3 = document.querySelector('.contact-cta h3');
+  const contactCtaP = document.querySelector('.contact-cta p');
+  const contactBtn = document.querySelector('.contact-btn');
+  
+  if (contactCtaH3) contactCtaH3.textContent = t.workTogether;
+  if (contactCtaP) contactCtaP.textContent = t.workDescription;
+  if (contactBtn) contactBtn.innerHTML = `<i class='bx bx-send'></i>${t.startProject}`;
   
   // Update footer
-  document.querySelector('.footer-text p').textContent = t.copyright;
+
+  
+  } catch (error) {
+    console.error('Error updating language:', error);
+  }
 }
 
 languageSwitch.onclick = () => {

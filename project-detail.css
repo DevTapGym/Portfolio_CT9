@@ -345,34 +345,47 @@
     line-height: 1.6;
 }
 
-/* Gallery */
+/* ================================= */
+/* PROJECT GALLERY SECTION STYLES */
+/* ================================= */
+
+/* Main Gallery Container */
 .project-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap: 2rem;
+    padding: 2rem 0;
 }
 
-/* Mobile Gallery Specific Styles */
+/* Mobile App Gallery Specific Styles */
 .mobile-gallery {
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     gap: 2.5rem;
     max-width: 120rem;
     margin: 0 auto;
+    padding: 3rem 0;
 }
 
+/* Gallery Item Base Styles */
 .gallery-item {
     position: relative;
     border-radius: 1.5rem;
     overflow: hidden;
     cursor: pointer;
     transition: all .3s ease;
+    background: var(--white-color);
+    box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, 0.08);
 }
 
+/* Mobile Screenshot Specific Styles */
 .mobile-screenshot {
     border-radius: 2rem;
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15);
+    background: linear-gradient(145deg, #f8f9fa 0%, #ffffff 100%);
+    border: .2rem solid rgba(117, 78, 249, 0.1);
 }
 
+/* Gallery Item Hover Effects */
 .gallery-item:hover {
     transform: translateY(-.5rem);
     box-shadow: 0 1rem 2rem rgba(117, 78, 249, 0.3);
@@ -381,8 +394,10 @@
 .mobile-screenshot:hover {
     transform: translateY(-.8rem);
     box-shadow: 0 2rem 4rem rgba(117, 78, 249, 0.25);
+    border-color: var(--main-color);
 }
 
+/* Gallery Image Styles */
 .gallery-item img {
     width: 100%;
     height: 25rem;
@@ -390,32 +405,37 @@
     transition: transform .4s ease;
 }
 
+/* Mobile Screenshot Image Specific */
 .mobile-screenshot img {
     height: 40rem;
     object-fit: contain;
-    background: #f8f9fa;
-    padding: 1rem;
+    background: transparent;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
 }
 
+/* Gallery Overlay */
 .gallery-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(117, 78, 249, 0.8);
+    background: linear-gradient(135deg, rgba(117, 78, 249, 0.9), rgba(156, 126, 247, 0.8));
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     opacity: 0;
     transition: all .3s ease;
+    backdrop-filter: blur(2px);
 }
 
 .gallery-item:hover .gallery-overlay {
     opacity: 1;
 }
 
+/* Gallery Image Hover Transform */
 .gallery-item:hover img {
     transform: scale(1.1);
 }
@@ -424,18 +444,125 @@
     transform: scale(1.05);
 }
 
+/* Gallery Overlay Icon */
 .gallery-overlay i {
     font-size: 4rem;
     color: var(--white-color);
     margin-bottom: 1rem;
+    transition: transform .3s ease;
 }
 
+.gallery-item:hover .gallery-overlay i {
+    transform: scale(1.1);
+}
+
+/* Gallery Caption */
 .gallery-caption {
     color: var(--white-color);
     font-size: 1.6rem;
     font-weight: 600;
     text-align: center;
-    opacity: 0.9;
+    opacity: 0.95;
+    text-shadow: 0 .2rem .5rem rgba(0, 0, 0, 0.3);
+    letter-spacing: .05rem;
+    margin-top: .5rem;
+}
+
+/* Gallery Modal Styles */
+.gallery-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(5px);
+    animation: galleryModalFadeIn 0.3s ease;
+}
+
+.gallery-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes galleryModalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes galleryModalFadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.gallery-modal.hide {
+    animation: galleryModalFadeOut 0.3s ease;
+}
+
+.gallery-modal-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    background: var(--bg-color);
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.4);
+    animation: galleryModalSlideIn 0.4s ease;
+}
+
+@keyframes galleryModalSlideIn {
+    from {
+        transform: scale(0.7) translateY(-3rem);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.gallery-modal-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 3rem;
+    color: var(--white-color);
+    cursor: pointer;
+    z-index: 1000;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.gallery-modal-close:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+.gallery-modal-image-container {
+    position: relative;
+    width: 100%;
+    height: 85vh;
+    min-height: 50rem;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-modal-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 0;
 }
 
 /* Challenges */
@@ -759,18 +886,44 @@
         grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     }
     
+    /* Mobile Gallery Responsive */
     .mobile-gallery {
-        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
         gap: 1.5rem;
+        padding: 2rem 0;
     }
     
     .mobile-screenshot img {
-        height: 35rem;
-        padding: 0.5rem;
+        height: 32rem;
+        padding: 1rem;
     }
     
     .gallery-caption {
         font-size: 1.4rem;
+    }
+    
+    .gallery-overlay i {
+        font-size: 3rem;
+    }
+    
+    /* Gallery Modal Responsive */
+    .gallery-modal-content {
+        max-width: 95vw;
+        max-height: 95vh;
+        margin: 1rem;
+    }
+    
+    .gallery-modal-image-container {
+        height: 80vh;
+        min-height: 40rem;
+    }
+    
+    .gallery-modal-close {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 2.5rem;
+        top: 1.5rem;
+        right: 1.5rem;
     }
     
     .tech-stack {

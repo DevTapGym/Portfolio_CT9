@@ -187,7 +187,7 @@
                             <img src="./images/project_1/Screenshot_1749346336.png" alt="Todo App Home Screen">
                             <div class="gallery-overlay">
                                 <i class='bx bx-zoom-in'></i>
-                                <span class="gallery-caption">Home Screen</span>
+                                <span class="gallery-caption">Login Screen</span>
                             </div>
                         </div>
                         <div class="gallery-item mobile-screenshot">
@@ -201,14 +201,14 @@
                             <img src="./images/project_1/Screenshot_1749346440.png" alt="Todo App Add Task">
                             <div class="gallery-overlay">
                                 <i class='bx bx-zoom-in'></i>
-                                <span class="gallery-caption">Add New Task</span>
+                                <span class="gallery-caption">Summary Task For Team</span>
                             </div>
                         </div>
                         <div class="gallery-item mobile-screenshot">
                             <img src="./images/project_1/Screenshot_1749346458.png" alt="Todo App Settings">
                             <div class="gallery-overlay">
                                 <i class='bx bx-zoom-in'></i>
-                                <span class="gallery-caption">App Settings</span>
+                                <span class="gallery-caption">Statistics screen</span>
                             </div>
                         </div>
                     </div>
@@ -359,7 +359,7 @@
 
     <!-- Project Detail Scripts -->
     <script>
-        // Gallery lightbox functionality
+        // Enhanced Gallery lightbox functionality
         document.addEventListener('DOMContentLoaded', function () {
             const galleryItems = document.querySelectorAll('.gallery-item');
 
@@ -368,18 +368,14 @@
                     const img = this.querySelector('img');
                     const caption = this.querySelector('.gallery-caption');
 
-                    // Create modal for image viewing
+                    // Create enhanced modal for mobile gallery
                     const modal = document.createElement('div');
-                    modal.className = 'image-modal show';
+                    modal.className = 'gallery-modal show';
                     modal.innerHTML = `
-                        <div class="modal-content">
-                            <span class="modal-close">&times;</span>
-                            <div class="modal-image-container">
+                        <div class="gallery-modal-content">
+                            <span class="gallery-modal-close">&times;</span>
+                            <div class="gallery-modal-image-container">
                                 <img src="${img.src}" alt="${img.alt}">
-                            </div>
-                            <div class="modal-info">
-                                <h3>${caption ? caption.textContent : img.alt}</h3>
-                                <p>Mobile app screenshot showcasing the user interface and functionality.</p>
                             </div>
                         </div>
                     `;
@@ -387,21 +383,26 @@
                     document.body.appendChild(modal);
                     document.body.style.overflow = 'hidden';
 
-                    // Close modal functionality
+                    // Enhanced close modal functionality
                     const closeModal = () => {
+                        modal.classList.remove('show');
                         modal.classList.add('hide');
                         document.body.style.overflow = 'auto';
+
                         setTimeout(() => {
-                            document.body.removeChild(modal);
+                            if (document.body.contains(modal)) {
+                                document.body.removeChild(modal);
+                            }
                         }, 300);
                     };
 
-                    modal.querySelector('.modal-close').addEventListener('click', closeModal);
+                    // Event listeners for modal
+                    modal.querySelector('.gallery-modal-close').addEventListener('click', closeModal);
                     modal.addEventListener('click', (e) => {
                         if (e.target === modal) closeModal();
                     });
 
-                    // Keyboard support
+                    // Enhanced keyboard support
                     const handleKeydown = (e) => {
                         if (e.key === 'Escape') {
                             closeModal();
@@ -409,7 +410,16 @@
                         }
                     };
                     document.addEventListener('keydown', handleKeydown);
+
+                    // Prevent body scroll when modal is open
+                    modal.addEventListener('wheel', (e) => {
+                        e.preventDefault();
+                    });
                 });
+
+                // Add visual feedback for clickable items
+                item.style.cursor = 'pointer';
+                item.setAttribute('title', 'Click to view full size');
             });
 
             // Smooth scroll for anchor links
@@ -424,6 +434,20 @@
                             block: 'start'
                         });
                     }
+                });
+            });
+
+            // Add loading animation for gallery images
+            const galleryImages = document.querySelectorAll('.gallery-item img');
+            galleryImages.forEach(img => {
+                img.addEventListener('load', function () {
+                    this.parentElement.classList.add('loaded');
+                });
+
+                // Add error handling
+                img.addEventListener('error', function () {
+                    this.parentElement.classList.add('error');
+                    console.warn('Failed to load gallery image:', this.src);
                 });
             });
         });
