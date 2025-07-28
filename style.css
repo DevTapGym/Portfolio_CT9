@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 *{
     margin: 0;
@@ -7,10 +8,17 @@
     box-sizing: border-box;
     text-decoration: none;
     border: none;
-    font-family: 'Poppins',sens-serif;
+    font-family: 'Poppins', 'sans-serif';
     outline: none;
     scroll-behavior: smooth;
 }
+
+/* Vietnamese font style */
+body.vietnamese-font,
+body.vietnamese-font * {
+    font-family: 'Open Sans', 'sans-serif';
+}
+
 :root{
     --bg-color:#fdfdfd;
     --text-color:#333;
@@ -71,7 +79,7 @@ body{
     font-size: 1.7rem;
     color: var(--white-color);
     font-weight: 500;   
-    margin-right: 3.5rem;
+    margin-right: 2.5rem;
 }
 .navbar a::before{
     content: '';
@@ -1346,6 +1354,7 @@ span{
     
     .language-toggle {
         padding: .5rem .8rem;
+        margin-right: 10px;
     }
     
     .lang-text {

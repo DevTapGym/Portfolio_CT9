@@ -63,15 +63,8 @@ const translations = {
     // Home section
     hello: 'Hello, I am',
     name: 'Huynh Cong Tien',
-    homeDescription: 'Welcome to my portfolio! I\'m a passionate programmer who loves bringing ideas to life through simple, effective, and well-designed software.',
+    homeDescription: 'Welcome to my portfolio! I\'m a passionate programmer who loves bringing ideas to life through simple, effective, and well-designed software. ',
     homeDescription2: 'Feel free to explore this portfolio to learn more about my projects, skills, and how I can help bring your ideas to life.',
-    downloadCV: 'Download CV',
-    
-    // Professions
-    mobileApp: 'Mobile Application',
-    backend: 'Back-end',
-    frontend: 'Front-end',
-    desktopApp: 'Desktop Application',
     
     // About section
     aboutTitle: 'About Me',
@@ -127,15 +120,8 @@ const translations = {
     // Home section
     hello: 'Xin chào, tôi là',
     name: 'Huỳnh Công Tiến',
-    homeDescription: 'Chào mừng đến với portfolio của tôi! Tôi là một lập trình viên đam mê, yêu thích việc biến ý tưởng thành hiện thực thông qua phần mềm đơn giản, hiệu quả và được thiết kế tốt.',
-    homeDescription2: 'Hãy thoải mái khám phá portfolio này để tìm hiểu thêm về các dự án, kỹ năng của tôi và cách tôi có thể giúp biến ý tưởng của bạn thành hiện thực.',
-    downloadCV: 'Tải CV',
-    
-    // Professions
-    mobileApp: 'Ứng Dụng Di Động',
-    backend: 'Back-end',
-    frontend: 'Front-end',
-    desktopApp: 'Ứng Dụng Desktop',
+    homeDescription: 'Chào bạn, cảm ơn đã ghé thăm portfolio của tôi! Tôi là một lập trình viên yêu thích việc tạo ra những phần mềm đơn giản, dễ dùng và có tính thẩm mỹ. Tôi luôn háo hức khi được biến một ý tưởng thành thứ gì đó hoạt động thực sự. ',
+    homeDescription2: 'Mời bạn xem qua các dự án tôi đã làm và nếu bạn có ý tưởng nào đang ấp ủ, biết đâu chúng ta có thể cùng nhau biến nó thành hiện thực.',
     
     // About section
     aboutTitle: 'Giới Thiệu Về Tôi',
@@ -184,6 +170,13 @@ const translations = {
 function updateLanguage(lang) {
   const t = translations[lang];
   
+  // Update font family based on language
+  if (lang === 'vi') {
+    document.body.classList.add('vietnamese-font');
+  } else {
+    document.body.classList.remove('vietnamese-font');
+  }
+  
   // Update navigation
   document.querySelector('a[href="#home"]').textContent = t.home;
   document.querySelector('a[href="#about"]').textContent = t.about;
@@ -195,15 +188,7 @@ function updateLanguage(lang) {
   document.querySelector('.home-content h3').textContent = t.hello;
   document.querySelector('.home-content h1').textContent = t.name;
   const homeParagraph = document.querySelector('.home-content p');
-  homeParagraph.innerHTML = t.homeDescription + '<br>' + t.homeDescription2;
-  document.querySelector('.home-content .btn').textContent = t.downloadCV;
-  
-  // Update professions
-  const professions = document.querySelectorAll('.profession h3');
-  if (professions[0]) professions[0].innerHTML = t.mobileApp.replace(' ', '<br />');
-  if (professions[1]) professions[1].textContent = t.backend;
-  if (professions[2]) professions[2].textContent = t.frontend;
-  if (professions[3]) professions[3].innerHTML = t.desktopApp.replace(' ', '<br />');
+  homeParagraph.innerHTML = t.homeDescription + t.homeDescription2;
   
   // Update about section
   document.querySelector('.about-content h2').innerHTML = t.aboutTitle.replace(' Me', ' <span>Me</span>').replace(' Tôi', ' <span>Tôi</span>');
@@ -284,6 +269,9 @@ document.addEventListener('DOMContentLoaded', () => {
     currentLanguage = savedLanguage;
     langText.textContent = currentLanguage.toUpperCase();
     updateLanguage(currentLanguage);
+  } else if (currentLanguage === 'en') {
+    // Ensure Vietnamese font is removed if default is English
+    document.body.classList.remove('vietnamese-font');
   }
 });
 
